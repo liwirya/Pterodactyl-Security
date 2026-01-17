@@ -154,7 +154,6 @@ class ServerCreationService
             abort(401, 'Eh, lu belum login nih!');
         }
 
-        // Kalo bukan super admin (ID 1), wajib kasih limit
         if ($user->id !== 1) {
             $memory = (int) Arr::get($data, 'memory', 0);
             $disk = (int) Arr::get($data, 'disk', 0);
@@ -404,7 +403,7 @@ class ServerController extends Controller
         // Info penting buat admin biasa
         $limitInfo = null;
         if ($user && $user->id !== 1) {
-            $limitInfo = 'Perhatian: Lu gak bisa bikin server dengan resource unlimited (RAM/CPU/Disk = 0). Cuma super admin yang bisa!';
+            $limitInfo = 'Perhatian: Lu gak bisa bikin server dengan resource unlimited (RAM/CPU/Disk = 0). Cuma admin utama yang bisa!';
         }
 
         return $this->view->make('admin.servers.new', [
@@ -484,7 +483,7 @@ show_summary() {
     echo ""
     
     info "FITUR YANG AKTIF:"
-    echo "  ✓ Super Admin (ID 1) bebas bikin server unlimited"
+    echo "  ✓ admin utama (ID 1) bebas bikin server unlimited"
     echo "  ✓ Admin biasa WAJIB kasih limit (RAM/CPU/Disk gak boleh 0)"
     echo "  ✓ Validasi otomatis pas bikin server baru"
     echo "  ✓ Validasi otomatis pas update server build"
@@ -492,7 +491,7 @@ show_summary() {
     echo ""
     
     info "CONTOH PENGGUNAAN:"
-    echo "  ${C_YELLOW}Super Admin:${C_RESET}"
+    echo "  ${C_YELLOW}admin utama:${C_RESET}"
     echo "    RAM: 0 MB (unlimited)     → ✓ BOLEH"
     echo "    CPU: 0%   (unlimited)     → ✓ BOLEH"
     echo "    Disk: 0 MB (unlimited)    → ✓ BOLEH"
@@ -515,7 +514,7 @@ show_summary() {
     echo "  1. Login sebagai admin biasa (bukan ID 1)"
     echo "  2. Coba bikin server dengan RAM = 0"
     echo "  3. Harusnya muncul error: 'RAM gak boleh unlimited'"
-    echo "  4. Login sebagai super admin (ID 1)"
+    echo "  4. Login sebagai admin utama (ID 1)"
     echo "  5. Bikin server dengan RAM = 0 harusnya sukses"
     echo ""
     
