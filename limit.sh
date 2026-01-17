@@ -320,7 +320,7 @@ class BuildModificationService
 
         if (!empty($errors)) {
             $message = "Gagal update server build:\n\n" . implode("\n", $errors);
-            $message .= "\n\nInfo: Cuma super admin (ID 1) yang bisa set resource unlimited.";
+            $message .= "\n\nInfo: Cuma admin utama (ID 1) yang bisa set resource unlimited.";
             
             abort(403, $message);
         }
