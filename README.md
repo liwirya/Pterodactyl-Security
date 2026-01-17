@@ -55,7 +55,7 @@ Sebelum menjalankan skrip, pastikan sistem Anda memenuhi syarat berikut:
 Clone repositori ini terlebih dahulu ke server panel Anda:
 
 ```bash
-git clone [https://github.com/liwirya/pterodactyl-security.git](https://github.com/liwirya/pterodactyl-security.git)
+git clone https://github.com/liwirya/pterodactyl-security.git
 cd pterodactyl-security
 chmod +x install.sh limit.sh
 
